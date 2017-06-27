@@ -1,0 +1,60 @@
+/*字体*/
+@font-face {
+  font-family: 'iconfont';
+  src: url('iconfont/iconfont.eot');
+  src: url('iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('iconfont/iconfont.woff') format('woff'),
+  url('iconfont/iconfont.ttf') format('truetype'),
+  url('iconfont/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*布局*/
+.flex-page{position: absolute;display: flex;overflow: hidden;width: 100%;height: 100%;flex-direction: column;}
+.flex-main{overflow-x: hidden;overflow-y: auto;width: 100%;flex: 1;}
+.flex{display: flex;flex-wrap: wrap;}
+.flex.flex-stretch{align-items: stretch;}
+.flex.flex-baseline{align-items: baseline;}
+.flex.flex-top{align-items: flex-start;}
+.flex.flex-middle{align-items: center;}
+.flex.flex-bottom{align-items: flex-end;}
+.flex.flex-left{justify-content: flex-start;}
+.flex.flex-center{justify-content: center;}
+.flex.flex-right{justify-content: flex-end;}
+.flex.flex-between{justify-content: space-between;}
+.flex.flex-around{justify-content: space-around;}
+.flex-cell{flex: 1;}
+.flex-cell.col-1{flex: 0 0 8.33333%;}
+.flex-cell.col-2{flex: 0 0 16.66667%;}
+.flex-cell.col-3{flex: 0 0 25%;}
+.flex-cell.col-4{flex: 0 0 33.33333%;}
+.flex-cell.col-5{flex: 0 0 41.66667%;}
+.flex-cell.col-6{flex: 0 0 50%;}
+.flex-cell.col-7{flex: 0 0 58.33333%;}
+.flex-cell.col-8{flex: 0 0 66.66667%;}
+.flex-cell.col-9{flex: 0 0 75%;}
+.flex-cell.col-10{flex: 0 0 83.33333%;}
+.flex-cell.col-11{flex: 0 0 91.66667%;}
+.flex-cell.col-12{flex: 0 0 100%;}
+/*编辑器区域*/
+.CodeMirror{height: 100vh;}
+/*展示区域*/
+.markdown-body{height: 100vh;overflow-y: scroll;}
+/*设置区域*/
+.md-setting{position: fixed; z-index: 10; right: -20%; width: 20%;height: 100%; padding:1%; background-color: #444;box-shadow: 0 1px 1px rgba(0, 0, 0, .2); color: #fff; transition:all .5s;}
+.md-setting.show{right: 0;}
+.md-setting .title{border-bottom: 1px solid #fff; padding-bottom: 10px; margin-bottom: 40px;}
+.md-setting .icon-btn{color: #fff; font-size: 24px; text-decoration: none; user-select: none;}
+.md-setting .icon-btn:hover{ color: #75afb1;}
+.md-setting .icon-btn:active{ color: #169fa2;}
+.md-setting .dropdown{margin: 15px 0;}
+.md-setting .scroll-y{max-height: 200px; height: auto; width: 100%; overflow-x: hidden;}
+.md-setting .select-theme.active {color: #4183C4;}
+.md-setting .foot {position: absolute; bottom: 0;  width: 90%; margin: 10px 0; }
+.md-setting .foot button{margin-bottom: 10px;}
+.md-setting .toggle-setting{position: absolute; left:-36px; top: 5vh; z-index: 9; text-decoration: none; user-select: none; font-size: 48px; color: #444; opacity: .3;}

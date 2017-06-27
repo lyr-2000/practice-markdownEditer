@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>markdown test</title>
+  <!-- 核心 -->
+  <link rel="stylesheet" href="node_modules/normalize-css/normalize.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="node_modules/highlight.js/styles/default.css">
+  <!-- addon -->
+  <link rel="stylesheet" href="node_modules/codemirror/addon/display/fullscreen.css" />
+  <!-- 主题 -->
+  <link id="themeStyle" rel="stylesheet" href="css/empty.css">
+  <!-- 个人 -->
+  <link rel="stylesheet" href="css/github-style.css">
+  <link rel="stylesheet" href="css/self.css">
+</head>
+
+<body>
+  <!-- 设置区域 -->
+  <div id="mdSetting" class="md-setting">
+    <h2 class="title"><i class="iconfont">&#xe600;</i> Markdown Edit</h2>
+    <div class="flex">
+      <div class="flex-cell">
+        <a id="toggleWrap" class="icon-btn"><i class="iconfont">&#xe61e;</i></a>
+      </div>
+      <div class="flex-cell">
+        <a id="showH5" class="icon-btn"><i class="iconfont">&#xe73b;</i></a>
+      </div>
+      <div class="flex-cell">
+        <a id="uploadPic" class="icon-btn"><i class="iconfont">&#xe6f6;</i></a>
+      </div>
+      <div class="flex-cell">
+        <a id="openFileAgent" class="icon-btn"><i class="iconfont">&#xe6a3;</i></a>
+      </div>
+      <div class="flex-cell">
+        <a id="toggleFullScreen" class="icon-btn"><i class="iconfont">&#xe63a;</i></a>
+        <input id="openFile" class="open-file" type="file" multiple="multiple" style="display:none;">
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-default btn-lg btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+        <i class="iconfont">&#xe6ff;</i> theme <span class="caret"></span></button>
+      <ul class="dropdown-menu scroll-y">
+        <li><a class="select-theme active" href="#" data-theme="default">default</a></li>
+        <li><a class="select-theme" href="#" data-theme="3024-day">3024-day</a></li>
+        <li><a class="select-theme" href="#" data-theme="3024-night">3024-night</a></li>
+        <li><a class="select-theme" href="#" data-theme="ambiance-mobile">ambiance-mobile</a></li>
+        <li><a class="select-theme" href="#" data-theme="ambiance">ambiance</a></li>
+        <li><a class="select-theme" href="#" data-theme="base16-dark">base16-dark</a></li>
+        <li><a class="select-theme" href="#" data-theme="base16-light">base16-light</a></li>
+        <li><a class="select-theme" href="#" data-theme="blackboard">blackboard</a></li>
+        <li><a class="select-theme" href="#" data-theme="cobalt">cobalt</a></li>
+        <li><a class="select-theme" href="#" data-theme="eclipse">eclipse</a></li>
+        <li><a class="select-theme" href="#" data-theme="elegant">elegant</a></li>
+        <li><a class="select-theme" href="#" data-theme="erlang-dark">erlang-dark</a></li>
+        <li><a class="select-theme" href="#" data-theme="lesser-dark">lesser-dark</a></li>
+        <li><a class="select-theme" href="#" data-theme="mbo">mbo</a></li>
+        <li><a class="select-theme" href="#" data-theme="mdn-like">mdn-like</a></li>
+        <li><a class="select-theme" href="#" data-theme="midnight">midnight</a></li>
+        <li><a class="select-theme" href="#" data-theme="monokai">monokai</a></li>
+        <li><a class="select-theme" href="#" data-theme="neat">neat</a></li>
+        <li><a class="select-theme" href="#" data-theme="neo">neo</a></li>
+        <li><a class="select-theme" href="#" data-theme="nightnight">night</a></li>
+        <li><a class="select-theme" href="#" data-theme="paraiso-dark">paraiso-dark</a></li>
+        <li><a class="select-theme" href="#" data-theme="paraiso-light">paraiso-light</a></li>
+        <li><a class="select-theme" href="#" data-theme="pastel-on-dark">pastel-on-dark</a></li>
+        <li><a class="select-theme" href="#" data-theme="rubyblue">rubyblue</a></li>
+        <li><a class="select-theme" href="#" data-theme="solarized">solarized</a></li>
+        <li><a class="select-theme" href="#" data-theme="the-matrix">the-matrix</a></li>
+        <li><a class="select-theme" href="#" data-theme="tomorrow-night-eighties">tomorrow-night-eighties</a></li>
+        <li><a class="select-theme" href="#" data-theme="twilight">twilight</a></li>
+        <li><a class="select-theme" href="#" data-theme="vibrant-ink">vibrant-ink</a></li>
+        <li><a class="select-theme" href="#" data-theme="xq-dark">xq-dark</a></li>
+        <li><a class="select-theme" href="#" data-theme="xq-light">xq-light</a></li>
+      </ul>
+    </div>
+    <div class="foot">
+      <button id="submitDoc" class="btn btn-success btn-lg btn-block">发表文章 <i class="iconfont">&#xe698;</i></button>
+      <address class="pull-right">
+        by枯树鸦: <a href="mailto:#">drytreecrow@gmail.com</a>
+      </address>
+    </div>
+    <a id="toggleSetting" class="toggle-setting"><i class="iconfont">&#xe603;</i></a>
+  </div>
+
+  <!-- 主体区域 -->
+  <div class="flex">
+    <!-- 编辑区域 -->
+    <div class="flex-cell col-6" style="overflow-x:hidden;">
+      <textarea id="CodeMirror"></textarea>
+    </div>
+    <!-- 展示区域 -->
+    <div class="flex-cell col-6" style="overflow-x:scroll;">
+      <div id="md-play" class="markdown-body"></div>
+    </div>
+  </div>
+
+  <!-- 核心 -->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/codemirror/lib/codemirror.js"></script>
+  <script src="node_modules/marked/lib/marked.js"></script>
+  <script src="node_modules/highlight.js/lib/highlight.js"></script>
+  <!-- mode -->
+  <script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+  <script src="node_modules/codemirror/mode/markdown/markdown.js"></script>
+  <!-- addon -->
+  <script src="node_modules/codemirror/addon/edit/closebrackets.js"></script>
+  <script src="node_modules/codemirror/addon/display/fullscreen.js"></script>
+  <script src="node_modules/codemirror/addon/display/placeholder.js"></script>
+  <script src="node_modules/codemirror/addon/edit/continuelist.js"></script>
+  <script src="node_modules/codemirror/addon/selection/active-line.js"></script>
+  <!-- self -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>

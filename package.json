@@ -1,0 +1,18 @@
+{
+  "name": "markdown-editer",
+  "version": "1.0.0",
+  "description": "This is a markdown editer projection,base in CodeMirror and marked!",
+  "main": "index.js",
+  "repository": "git@github.com:treecrow/markdown-editer.git",
+  "author": "treecrow <drytreecrow@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "codemirror": "^5.27.2",
+    "font-awesome": "^4.7.0",
+    "highlight.js": "^9.12.0",
+    "jquery": "^3.2.1",
+    "marked": "^0.3.6",
+    "normalize-css": "^2.3.1"
+  }
+}
